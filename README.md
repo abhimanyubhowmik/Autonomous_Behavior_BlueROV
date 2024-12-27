@@ -116,29 +116,29 @@ $\alpha = 0.1$, $\beta = 0.005$.
 
 ### Forward
 In the **Forward** state robot keeps the constant surge speed and constant heading. Also, we control the distance to the obstacle in front of the robot.
-Constant speed for the surge is set in $pingerCallback$ function. We used value 0.00001 for $forward\_speed$ variable.
+Constant speed for the surge is set in $pingerCallback$ function. We used value 0.00001 for $forward\_ speed$ variable.
 
 #### Yaw Control 
 Constant heading is implemented in $OdoCallback$ function. When this function is called (new data from IMU is received), following steps are done:
  - We start by converting the orientation feedback of the robot's
 IMU (in quaternions) into Euler angles. We get our roll, pitch and yaw angles from here.
 
-- The initial yaw angle is saved when the ROV is turned to autonomous mode. After that, for each callback, we check the difference between the $initial\_yaw$ and $current\_yaw$ angle.
+- The initial yaw angle is saved when the ROV is turned to autonomous mode. After that, for each callback, we check the difference between the $initial\_ yaw$ and $current\_ yaw$ angle.
 -  We use a P-controller to minimize this error and adjust the yaw angle of the ROV accordingly. This ensures a steady heading angle when the ROV is in the **forward** state and helps maintain stability during navigation.
 - The yaw angle, that is, obtained from IMU measurements, is in range $ [0, 360] $ degrees. This can lead to the following problems:
     - Inadequate control value when the robot is stabilising around zero-degree angle.
-    - Overly large rotations. For example, when robot should rotate from $ 10\degree $ to $ 270\degree $. From common sense it is obvious, that the correct way to fulfill this rotation is to go $ 100\degree $ counter-clockwise, but not $ 260\degree $ clockwise. 
+    - Overly large rotations. For example, when robot should rotate from $10 \degree$ to $270 \degree$. From common sense it is obvious, that the correct way to fulfill this rotation is to go $100 \degree$ counter-clockwise, but not $260 \degree$ clockwise. 
 #### Distance Control
 
-Distance is measured by an ultrasound sensor mounted on the robot. When the distance is lower than the given threshold (variable $desired\_distance$), the state changes to  **stop**.
+Distance is measured by an ultrasound sensor mounted on the robot. When the distance is lower than the given threshold (variable $desired\_ distance$), the state changes to  **stop**.
 Control of the distance is implemented in $ pingerCallback $ function
 
 ---
 
 ### Stop
 
-The implementation of this state is done in $OdoCallback$ function. The robot just switches to the $search\_left$ state and saves the moment of time corresponding to the start of the turn.
-- In this state robot turns counter-clockwise by $ 50\degree $ and after this check is there still an obstacle in front of him.
+The implementation of this state is done in $OdoCallback$ function. The robot just switches to the $search\_ left$ state and saves the moment of time corresponding to the start of the turn.
+- In this state robot turns counter-clockwise by $ 50 \degree $ and after this check is there still an obstacle in front of him.
 - Exploration of the free path is done in $pingerCallback$ function itself. The robot checks that turn started 10 seconds ago and then checks the presence of the obstacle. If there is no obstacle, it starts moving forward **forward**, otherwise, it turns again by $ 50\degree $. 10-second pause is added to prevent obtaining inadequate measurements from the distance sensor.
 
 
