@@ -17,7 +17,7 @@ Group Members:
 * [Bhat Ishfaq](https://www.linkedin.com/in/bhat-ishfaq/)
 
 <div align="center">
-<img src = "assets/Ours_img.jpeg" width="100%">
+<img src = "assets/Ours_img.jpeg" width="60%">
 <p>Our group at the COSMER Lab water tank at the Université de Toulon</p>
 </div>
 
