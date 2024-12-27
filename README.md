@@ -16,6 +16,12 @@ Group Members:
 * [Tayyab Tahir](https://www.linkedin.com/in/tayyab-tahir-99ab74162/)
 * [Bhat Ishfaq](https://www.linkedin.com/in/bhat-ishfaq/)
 
+<div align="center">
+<img src = "assets/Ours_img.jpeg" width="100%">
+<p>Our group at the COSMER Lab water tank at the Université de Toulon</p>
+</div>
+
+
 ### How to Use:
 
 * Prequisites:
